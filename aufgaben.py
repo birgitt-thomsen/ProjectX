@@ -257,7 +257,16 @@ def aufgabe_041_group_by_length(worte: list[str]) -> dict[int, list[str]]:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
     """Erstelle eine Häufigkeitstabelle für Wörter."""
-    pass
+
+    worthaeufigkeit = {}
+
+    for wort in worte:
+        if wort not in worthaeufigkeit:
+            worthaeufigkeit[wort] = 0
+        if wort in worthaeufigkeit:
+            worthaeufigkeit[wort] += 1
+
+    return worthaeufigkeit
 
 
 # Gruppe: Appeyron, esterplaza
