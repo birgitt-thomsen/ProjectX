@@ -376,7 +376,11 @@ def aufgabe_043_dict_without_keys(
 def aufgabe_044_find_key_by_value(data: dict[str, int], value: int) -> \
 Optional[str]:
     """Finde den ersten Schlüssel, dessen Wert value entspricht."""
-    pass
+    for key, current_value in data.items():
+        if current_value == value:
+            return key
+
+    return None
 
 
 # Gruppe: Appeyron, esterplaza
