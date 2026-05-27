@@ -294,9 +294,17 @@ def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_043_dict_without_keys(data: dict[str, int], keys: list[str]) -> dict[str, int]:
+def aufgabe_043_dict_without_keys(
+    data: dict[str, int],
+    keys: list[str]
+) -> dict[str, int]:
     """Gib ein neues Dict ohne die angegebenen Schlüssel zurück."""
-    pass
+
+    return {
+        key: value
+        for key, value in data.items()
+        if key not in keys
+    }
 
 
 # Gruppe: Appeyron, esterplaza
