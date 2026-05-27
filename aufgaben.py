@@ -251,7 +251,18 @@ def aufgabe_040_count_letters(text: str) -> dict[str, int]:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_041_group_by_length(worte: list[str]) -> dict[int, list[str]]:
     """Gruppiere Wörter nach ihrer Länge."""
-    pass
+
+    gruppierte_woerter = {}
+
+    for wort in worte:
+        wortlaenge = len(wort)
+
+        if wortlaenge not in gruppierte_woerter:
+            gruppierte_woerter[wortlaenge] = []
+
+        gruppierte_woerter[wortlaenge].append(wort)
+
+    return gruppierte_woerter
 
 
 # Gruppe: Appeyron, esterplaza
