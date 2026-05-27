@@ -377,7 +377,7 @@ def aufgabe_061_int_zu_binaer(n: int) -> str:
 # Gruppe: markus-niessen, kollodergrosse
 def aufgabe_062_zahlenformat(n: float, nachkommastellen: int) -> str:
     """Formatiere eine Zahl mit fester Anzahl Nachkommastellen."""
-    pass
+    return f"{n:.{nachkommastellen}f}"
 
 
 # Gruppe: markus-niessen, kollodergrosse
