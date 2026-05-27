@@ -45,12 +45,12 @@ def aufgabe_006_capitalize_saetze(text: str) -> str:
     """Setze den ersten Buchstaben jedes Satzes auf Großbuchstaben."""
     if not text:
         return text
-    
+
     result = []
     capitalize_next = True
-    
+
     for char in text:
-        if char in '.!?':
+        if char in ".!?":
             result.append(char)
             capitalize_next = True
         elif char.isalpha() and capitalize_next:
@@ -60,8 +60,8 @@ def aufgabe_006_capitalize_saetze(text: str) -> str:
             result.append(char)
             if not char.isspace():
                 capitalize_next = False
-    
-    return ''.join(result)
+
+    return "".join(result)
 
 
 # Gruppe: patricznr1, ANY1-hub
@@ -82,7 +82,7 @@ def aufgabe_009_kuerze_text(text: str, limit: int) -> str:
     """Schneide den Text nach limit Zeichen ab und füge '...' an, falls nötig."""
     if len(text) <= limit:
         return text
-    return text[:limit] + '...'
+    return text[:limit] + "..."
 
 
 # Gruppe: patricznr1, ANY1-hub
@@ -114,13 +114,13 @@ def aufgabe_013_zaehle_ziffern(text: str) -> int:
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_014_entferne_whitespace(text: str) -> str:
     """Entferne alle Whitespaces (Leerzeichen, Tabs, Zeilenumbrüche)."""
-    return ''.join(char for char in text if not char.isspace())
+    return "".join(char for char in text if not char.isspace())
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_015_slugify(text: str) -> str:
     """Erzeuge einen einfachen Slug: Kleinbuchstaben, '-' statt Leerzeichen."""
-    return text.lower().replace(' ', '-')
+    return text.lower().replace(" ", "-")
 
 
 # Gruppe: patricznr1, ANY1-hub
@@ -359,7 +359,12 @@ def aufgabe_051_sum_range(n: int) -> int:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_052_factorial(n: int) -> int:
     """Berechne n! iterativ oder rekursiv."""
-    pass
+    if n < 0:
+        raise ValueError("Zahl muss positiv sein.")
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
 
 
 # Gruppe: Appeyron, esterplaza
