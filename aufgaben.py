@@ -191,61 +191,105 @@ def aufgabe_030_flatten(liste_von_listen: list[list[int]]) -> list[int]:
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_031_merge_lists(a: list[int], b: list[int]) -> list[int]:
     """Mische zwei Listen abwechselnd (falls ungleich lang, Rest anhängen)."""
-    pass
+    ergebnis = []
+    # Bestimme die Länge der kürzeren Liste, um Exceptions zu vermeiden
+    min_laenge = min(len(a), len(b))
+    
+    # Wechselnd Elemente hinzufügen
+    for i in range(min_laenge):
+        ergebnis.append(a[i])
+        ergebnis.append(b[i])
+    
+    # Den verbleibenden Rest der längeren Liste anhängen
+    ergebnis.extend(a[min_laenge:])
+    ergebnis.extend(b[min_laenge:])
+    
+    return ergebnis
+
+
+# --- Kurzer Testlauf ---
+# print(aufgabe_031_merge_lists([1, 3, 5], [2, 4, 6, 7, 8]))
+# Output: [1, 2, 3, 4, 5, 6, 7, 8]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_032_remove_none(werte: list[Optional[int]]) -> list[int]:
     """Entferne alle None-Werte aus der Liste."""
-    pass
+    return [w for w in werte if w is not None]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_033_chunk_list(werte: list[int], groesse: int) -> list[list[int]]:
-    """Zerlege die Liste in Blöcke der Länge groesse."""
-    pass
+	"""Zerlege die Liste in Blöcke der Länge groesse."""
+	# Falls die Größe ungültig ist, leere Liste zurückgeben um Endlosschleifen zu vermeiden
+	if groesse <= 0:
+		return []
+	
+	# Nutzt Slicing in Schritten der gewünschten Größe
+	return [werte[i:i + groesse] for i in range(0, len(werte), groesse)]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_034_rotate_left(werte: list[int], schritte: int) -> list[int]:
-    """Rotiert die Liste um schritte nach links."""
-    pass
+	"""Rotiert die Liste um schritte nach links."""
+	if not werte:
+		return []
+	
+	# Modulo-Operation fängt Schritte ab, die größer als die Liste selbst sind
+	effektive_schritte = schritte % len(werte)
+	
+	# Schneidet die Liste auf und setzt sie rotiert wieder zusammen
+	return werte[effektive_schritte:] + werte[:effektive_schritte]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_035_split_even_odd(werte: list[int]) -> tuple[list[int], list[int]]:
-    """Trenne die Liste in gerade und ungerade Zahlen auf."""
-    pass
+	"""Trenne die Liste in gerade und ungerade Zahlen auf."""
+	gerade = [w for w in werte if w % 2 == 0]
+	ungerade = [w for w in werte if w % 2 != 0]
+	return gerade, ungerade
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_036_dict_keys_sort(data: dict[str, int]) -> list[str]:
-    """Gib sortierte Schlüssel eines Dicts zurück."""
-    pass
+	"""Gib sortierte Schlüssel eines Dicts zurück."""
+	# sorted() gibt standardmäßig die sortierten Keys eines Dicts zurück
+	return sorted(data.keys())
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_037_dict_values_sum(data: dict[str, int]) -> int:
-    """Summiere alle Werte in einem Dict."""
-    pass
+	"""Summiere alle Werte in einem Dict."""
+	return sum(data.values())
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_038_invert_dict(data: dict[str, str]) -> dict[str, str]:
-    """Tausche Schlüssel und Werte (Fehler bei Duplikaten klären)."""
-    pass
+	"""Tausche Schlüssel und Werte (Fehler bei Duplikaten klären)."""
+	# Hinweis zum Duplikat-Problem: Bei doppelten Werten überschreibt in Python
+	# der spätere Eintrag den früheren im neuen Dict.
+	return {wert: schluessel for schluessel, wert in data.items()}
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_039_merge_dicts(a: dict[str, Any], b: dict[str, Any]) -> dict[str, Any]:
-    """Führe zwei Dicts zusammen, b überschreibt a bei Konflikten."""
-    pass
+	"""Führe zwei Dicts zusammen, b überschreibt a bei Konflikten."""
+	# Der Merge-Operator | (ab Python 3.9) führt Dicts genau so zusammen,
+	# dass das rechte Dict das linke bei Überschneidungen überschreibt.
+	return a | b
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_040_count_letters(text: str) -> dict[str, int]:
-    """Zähle, wie oft jeder Buchstabe im Text vorkommt (case-insensitive)."""
-    pass
+	"""Zähle, wie oft jeder Buchstabe im Text vorkommt (case-insensitive)."""
+	ergebnis = {}
+	# Text in Kleinbuchstaben umwandeln für Case-Insensitivity
+	for zeichen in text.lower():
+		# Nur echte Buchstaben zählen (Satzzeichen/Leerzeichen ignorieren)
+		if zeichen.isalpha():
+			# dict.get(schluessel, standardwert) verhindert KeyError
+			ergebnis[zeichen] = ergebnis.get(zeichen, 0) + 1
+	return ergebnis
 
 
 # Gruppe: Appeyron, esterplaza
