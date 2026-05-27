@@ -480,7 +480,7 @@ def aufgabe_067_linear_map(wert: float, alt_min: float, alt_max: float, neu_min:
 # Gruppe: markus-niessen, kollodergrosse
 def aufgabe_068_countdown(n: int) -> list[int]:
     """Gib eine Liste von n bis 0 zurück."""
-    pass
+    return list(range(n, -1, -1))
 
 
 # Gruppe: markus-niessen, kollodergrosse
