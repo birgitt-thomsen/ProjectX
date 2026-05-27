@@ -282,7 +282,18 @@ def aufgabe_040_count_letters(text: str) -> dict[str, int]:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_041_group_by_length(worte: list[str]) -> dict[int, list[str]]:
     """Gruppiere Wörter nach ihrer Länge."""
-    pass
+
+    gruppierte_woerter = {}
+
+    for wort in worte:
+        wortlaenge = len(wort)
+
+        if wortlaenge not in gruppierte_woerter:
+            gruppierte_woerter[wortlaenge] = []
+
+        gruppierte_woerter[wortlaenge].append(wort)
+
+    return gruppierte_woerter
 
 
 # Gruppe: Appeyron, esterplaza
@@ -301,9 +312,17 @@ def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_043_dict_without_keys(data: dict[str, int], keys: list[str]) -> dict[str, int]:
+def aufgabe_043_dict_without_keys(
+    data: dict[str, int],
+    keys: list[str]
+) -> dict[str, int]:
     """Gib ein neues Dict ohne die angegebenen Schlüssel zurück."""
-    pass
+
+    return {
+        key: value
+        for key, value in data.items()
+        if key not in keys
+    }
 
 
 # Gruppe: Appeyron, esterplaza
