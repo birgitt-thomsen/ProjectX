@@ -11,181 +11,214 @@ from typing import Any, Optional
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_001_spiegle_text(text: str) -> str:
     """Gib den Text rückwärts zurück."""
-    pass
+    return text[::-1]
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_002_zaehle_vokale(text: str) -> int:
     """Zähle die Anzahl der Vokale im Text (a, e, i, o, u)."""
-    pass
+    vokale = "aeiouAEIOU"
+    return sum(1 for char in text if char in vokale)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_003_ist_palindrom(text: str) -> bool:
     """Prüfe, ob der Text ein Palindrom ist (Groß/Klein ignorieren)."""
-    pass
+    clean_text = text.lower()
+    return clean_text == clean_text[::-1]
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_004_zu_grossbuchstaben(text: str) -> str:
     """Wandle alle Zeichen in Großbuchstaben um."""
-    pass
+    return text.upper()
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_005_zu_kleinbuchstaben(text: str) -> str:
     """Wandle alle Zeichen in Kleinbuchstaben um."""
-    pass
+    return text.lower()
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_006_capitalize_saetze(text: str) -> str:
     """Setze den ersten Buchstaben jedes Satzes auf Großbuchstaben."""
-    pass
+    if not text:
+        return text
+    
+    result = []
+    capitalize_next = True
+    
+    for char in text:
+        if char in '.!?':
+            result.append(char)
+            capitalize_next = True
+        elif char.isalpha() and capitalize_next:
+            result.append(char.upper())
+            capitalize_next = False
+        else:
+            result.append(char)
+            if not char.isspace():
+                capitalize_next = False
+    
+    return ''.join(result)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_007_ersetze_zeichen(text: str, alt: str, neu: str) -> str:
     """Ersetze alle Vorkommen von alt durch neu in text."""
-    pass
+    return text.replace(alt, neu)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_008_zaehle_wort(text: str, wort: str) -> int:
     """Zähle, wie oft wort im Text vorkommt (wortgenau)."""
-    pass
+    worte = text.split()
+    return worte.count(wort)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_009_kuerze_text(text: str, limit: int) -> str:
     """Schneide den Text nach limit Zeichen ab und füge '...' an, falls nötig."""
-    pass
+    if len(text) <= limit:
+        return text
+    return text[:limit] + '...'
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_010_teile_worte(text: str) -> list[str]:
     """Zerlege einen Satz in Wörter, getrennt nach Leerzeichen."""
-    pass
+    return text.split()
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_011_verbinde_worte(worte: list[str], trenner: str = ", ") -> str:
     """Verbinde Wörter mit dem angegebenen Trenner zu einem String."""
-    pass
+    return trenner.join(worte)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_012_laengstes_wort(worte: list[str]) -> Optional[str]:
     """Finde das längste Wort in der Liste, None bei leerer Liste."""
-    pass
+    if not worte:
+        return None
+    return max(worte, key=len)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_013_zaehle_ziffern(text: str) -> int:
     """Zähle alle Zeichen im Text, die Ziffern sind."""
-    pass
+    return sum(1 for char in text if char.isdigit())
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_014_entferne_whitespace(text: str) -> str:
     """Entferne alle Whitespaces (Leerzeichen, Tabs, Zeilenumbrüche)."""
-    pass
+    return ''.join(char for char in text if not char.isspace())
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_015_slugify(text: str) -> str:
     """Erzeuge einen einfachen Slug: Kleinbuchstaben, '-' statt Leerzeichen."""
-    pass
+    return text.lower().replace(' ', '-')
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_016_summe_liste(zahlen: list[int]) -> int:
     """Summiere alle Zahlen in der Liste."""
-    pass
+    return sum(zahlen)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_017_mittelwert(zahlen: list[float]) -> float:
     """Berechne den arithmetischen Mittelwert der Liste."""
-    pass
+    if not zahlen:
+        return 0.0
+    return sum(zahlen) / len(zahlen)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_018_max_wert(zahlen: list[int]) -> Optional[int]:
     """Gib den größten Wert zurück, None bei leerer Liste."""
-    pass
+    if not zahlen:
+        return None
+    return max(zahlen)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_019_min_wert(zahlen: list[int]) -> Optional[int]:
     """Gib den kleinsten Wert zurück, None bei leerer Liste."""
-    pass
+    if not zahlen:
+        return None
+    return min(zahlen)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_020_sortiere_aufsteigend(zahlen: list[int]) -> list[int]:
     """Gib eine neue Liste mit aufsteigend sortierten Zahlen zurück."""
-    pass
+    return sorted(zahlen)
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_021_sortiere_absteigend(zahlen: list[int]) -> list[int]:
     """Gib eine neue Liste mit absteigend sortierten Zahlen zurück."""
-    pass
+    return sorted(zahlen, reverse=True)
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_022_filter_gerade(zahlen: list[int]) -> list[int]:
     """Filtere alle geraden Zahlen aus der Liste."""
-    pass
+    return [zahl for zahl in zahlen if zahl % 2 == 0]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_023_filter_ungerade(zahlen: list[int]) -> list[int]:
     """Filtere alle ungeraden Zahlen aus der Liste."""
-    pass
+    return [zahl for zahl in zahlen if zahl % 2 != 0]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_024_quadrate(zahlen: list[int]) -> list[int]:
     """Gib eine Liste mit Quadraten aller Zahlen zurück."""
-    pass
+    return [zahl ** 2 for zahl in zahlen]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_025_unique_werte(zahlen: list[int]) -> list[int]:
     """Entferne Duplikate, erhalte die erste Reihenfolge."""
-    pass
+    return list(dict.fromkeys(zahlen))
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_026_finde_index(werte: list[str], wert: str) -> int:
     """Finde den Index von wert, -1 wenn nicht vorhanden."""
-    pass
+    if wert in werte:
+        return werte.index(wert)
+    return -1
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_027_teilliste(werte: list[int], start: int, ende: int) -> list[int]:
     """Gib eine Teilliste von start (inkl.) bis ende (exkl.) zurück."""
-    pass
+    return werte[start:ende]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_028_zaehle_vorkommen(werte: list[str], gesucht: str) -> int:
     """Zähle, wie oft gesucht in der Liste vorkommt."""
-    pass
+    return werte.count(gesucht)
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_029_drehe_liste(werte: list[Any]) -> list[Any]:
     """Drehe die Reihenfolge der Liste um."""
-    pass
+    return werte[::-1]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_030_flatten(liste_von_listen: list[list[int]]) -> list[int]:
     """Führe eine verschachtelte Liste zu einer flachen Liste zusammen."""
-    pass
+    return [zahl for liste in liste_von_listen for zahl in liste]
 
 
 # Gruppe: it-student, birgitt-thomsen
@@ -296,19 +329,47 @@ def aufgabe_040_count_letters(text: str) -> dict[str, int]:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_041_group_by_length(worte: list[str]) -> dict[int, list[str]]:
     """Gruppiere Wörter nach ihrer Länge."""
-    pass
+
+    gruppierte_woerter = {}
+
+    for wort in worte:
+        wortlaenge = len(wort)
+
+        if wortlaenge not in gruppierte_woerter:
+            gruppierte_woerter[wortlaenge] = []
+
+        gruppierte_woerter[wortlaenge].append(wort)
+
+    return gruppierte_woerter
 
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
     """Erstelle eine Häufigkeitstabelle für Wörter."""
-    pass
+
+    worthaeufigkeit = {}
+
+    for wort in worte:
+        if wort not in worthaeufigkeit:
+            worthaeufigkeit[wort] = 0
+        if wort in worthaeufigkeit:
+            worthaeufigkeit[wort] += 1
+
+    return worthaeufigkeit
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_043_dict_without_keys(data: dict[str, int], keys: list[str]) -> dict[str, int]:
+def aufgabe_043_dict_without_keys(
+    data: dict[str, int],
+    keys: list[str]
+) -> dict[str, int]:
     """Gib ein neues Dict ohne die angegebenen Schlüssel zurück."""
-    pass
+
+    return {
+        key: value
+        for key, value in data.items()
+        if key not in keys
+    }
 
 
 # Gruppe: Appeyron, esterplaza
@@ -422,7 +483,7 @@ def aufgabe_061_int_zu_binaer(n: int) -> str:
 # Gruppe: markus-niessen, kollodergrosse
 def aufgabe_062_zahlenformat(n: float, nachkommastellen: int) -> str:
     """Formatiere eine Zahl mit fester Anzahl Nachkommastellen."""
-    pass
+    return f"{n:.{nachkommastellen}f}"
 
 
 # Gruppe: markus-niessen, kollodergrosse
@@ -434,7 +495,9 @@ def aufgabe_063_clamp(wert: float, minimum: float, maximum: float) -> float:
 # Gruppe: markus-niessen, kollodergrosse
 def aufgabe_064_normiere(werte: list[float]) -> list[float]:
     """Skaliere Werte in den Bereich 0..1 (min-max-Normierung)."""
-    pass
+    minimum = min(werte)
+    maximum = max(werte)
+    return [(wert - minimum) / (maximum - minimum) for wert in werte]
 
 
 # Gruppe: markus-niessen, kollodergrosse
@@ -446,7 +509,11 @@ def aufgabe_065_skaliere(werte: list[float], faktor: float) -> list[float]:
 # Gruppe: markus-niessen, kollodergrosse
 def aufgabe_066_moving_average(werte: list[float], fenster: int) -> list[float]:
     """Berechne gleitende Durchschnitte mit Fenstergröße fenster."""
-    pass
+    moving_average = []
+    for index in range(fenster, len(werte)+1):
+        current_average = sum(werte[index-fenster:index]) / fenster
+        moving_average.append(current_average)
+    return moving_average
 
 
 # Gruppe: markus-niessen, kollodergrosse
@@ -536,31 +603,45 @@ def aufgabe_080_matrix_multiply(a: list[list[int]], b: list[list[int]]) -> list[
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_081_filter_worte_laenge(worte: list[str], minimum: int) -> list[str]:
     """Filtere Wörter, deren Länge mindestens minimum beträgt."""
-    pass
+    return [wort for wort in worte if len(wort) >= minimum]
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_082_join_ohne_letztes(worte: list[str]) -> str:
     """Verbinde Wörter mit Komma, ersetze das letzte Komma durch ' und '."""
-    pass
+    if not worte:
+        return ""
+    if len(worte) == 1:
+        return worte[0]
+
+    return ", ".join(worte[:-1]) + " und " + worte[-1]
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_083_count_characters_ignore_case(text: str) -> dict[str, int]:
     """Zähle Zeichenhäufigkeiten ohne zwischen Groß/Klein zu unterscheiden."""
-    pass
+    ergebnis = {}
+    for zeichen in text.lower():
+        ergebnis[zeichen] = ergebnis.get(zeichen, 0) + 1
+    return ergebnis
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_084_vokale_entfernen(text: str) -> str:
     """Entferne alle Vokale aus dem Text."""
-    pass
+    vokale = "aeiouAEIOU"
+    return "".join(zeichen for zeichen in text if zeichen not in vokale)
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_085_erste_wiederholung(werte: list[Any]) -> Optional[Any]:
     """Finde das erste Element, das mehr als einmal vorkommt."""
-    pass
+    gesehen = set()
+    for wert in werte:
+        if wert in gesehen:
+            return wert
+        gesehen.add(wert)
+    return None
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
