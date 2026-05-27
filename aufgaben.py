@@ -260,7 +260,7 @@ def aufgabe_033_chunk_list(werte: list[int], groesse: int) -> list[list[int]]:
         return []
 
     # Nutzt Slicing in Schritten der gewünschten Größe
-    return [werte[i:i + groesse] for i in range(0, len(werte), groesse)]
+    return [werte[i: i + groesse] for i in range(0, len(werte), groesse)]
 
 
 # Gruppe: it-student, birgitt-thomsen
@@ -360,21 +360,16 @@ def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_043_dict_without_keys(
-        data: dict[str, int],
-        keys: list[str]
+        data: dict[str, int], keys: list[str]
 ) -> dict[str, int]:
     """Gib ein neues Dict ohne die angegebenen Schlüssel zurück."""
 
-    return {
-        key: value
-        for key, value in data.items()
-        if key not in keys
-    }
+    return {key: value for key, value in data.items() if key not in keys}
 
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_044_find_key_by_value(data: dict[str, int], value: int) -> \
-        Optional[str]:
+Optional[str]:
     """Finde den ersten Schlüssel, dessen Wert value entspricht."""
     for key, current_value in data.items():
         if current_value == value:
@@ -469,7 +464,16 @@ def aufgabe_054_ist_primzahl(n: int) -> bool:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_055_primzahlen_bis(limit: int) -> list[int]:
     """Gib alle Primzahlen bis inklusive limit zurück."""
-    pass
+    sieve = [True] * (limit + 1)
+    if limit >= 0:
+        sieve[0] = False
+    if limit >= 1:
+        sieve[1] = False
+    for p in range(2, int(limit ** 0.5) + 1):
+        if sieve[p]:
+            for i in range(p * p, limit + 1, p):
+                sieve[i] = False
+    return [p for p in range(2, limit + 1) if sieve[p]]
 
 
 # Gruppe: Appeyron, esterplaza
@@ -542,7 +546,7 @@ def aufgabe_066_moving_average(werte: list[float], fenster: int) -> list[
     """Berechne gleitende Durchschnitte mit Fenstergröße fenster."""
     moving_average = []
     for index in range(fenster, len(werte) + 1):
-        current_average = sum(werte[index - fenster:index]) / fenster
+        current_average = sum(werte[index - fenster: index]) / fenster
         moving_average.append(current_average)
     return moving_average
 
@@ -728,9 +732,12 @@ def aufgabe_090_anagramm(text_a: str, text_b: str) -> bool:
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_091_zeichenhaeufigkeit_top(text: str, limit: int = 3) -> list[tuple[str, int]]:
+def aufgabe_091_zeichenhaeufigkeit_top(
+        text: str, limit: int = 3
+) -> list[tuple[str, int]]:
     """Gib die häufigsten Zeichen mitsamt Häufigkeit zurück."""
     from collections import Counter
+
     return Counter(text).most_common(limit)
 
 
@@ -738,7 +745,9 @@ def aufgabe_091_zeichenhaeufigkeit_top(text: str, limit: int = 3) -> list[tuple[
 def aufgabe_092_tokenisiere_satz(text: str) -> list[str]:
     """Tokenisiere einen Satz grob nach Leer- und Satzzeichen."""
     import re
-    return re.findall(r'\w+|[^\w\s]', text)
+
+    return re.findall(r"\w+|[^\w\s]", text)
+
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_093_title_case(text: str) -> str:
@@ -753,7 +762,8 @@ def aufgabe_094_count_substring(text: str, substring: str) -> int:
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> list[str]:
+def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> \
+list[str]:
     """Entferne Stopwörter aus einer Wortliste (case-insensitive)."""
     stopwords_lower = {word.lower() for word in stopwords}
     return [word for word in worte if word.lower() not in stopwords_lower]
@@ -768,6 +778,7 @@ def aufgabe_096_ersetzungen_kette(text: str, mapping: dict[str, str]) -> str:
 
 
 import re
+
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_097_validiere_email(text: str) -> bool:
@@ -784,8 +795,8 @@ def aufgabe_098_extract_domain(url: str) -> str:
     """Extrahiere die Domain aus einer URL (ohne Schema/Path/Query)."""
     # Falls die URL kein Schema (wie http://) hat, fügen wir es kurz hinzu,
     # damit urlparse sie korrekt als Webadresse erkennt
-    if not url.startswith(('http://', 'https://')):
-        url = 'https://' + url
+    if not url.startswith(("http://", "https://")):
+        url = "https://" + url
 
     return urlparse(url).netloc
 
@@ -796,8 +807,12 @@ def aufgabe_099_parse_kv(text: str) -> dict[str, str]:
     if not text.strip():
         return {}
 
-    return {schluessel.strip(): wert.strip() for paar in text.split(';') if '=' in paar for schluessel, wert in
-            [paar.split('=', 1)]}
+    return {
+        schluessel.strip(): wert.strip()
+        for paar in text.split(";")
+        if "=" in paar
+        for schluessel, wert in [paar.split("=", 1)]
+    }
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
@@ -807,10 +822,10 @@ def aufgabe_099_parse_kv(text: str) -> dict[str, str]:
         return ergebnis
 
     # In Paare zerlegen
-    for paar in text.split(';'):
-        if '=' in paar:
+    for paar in text.split(";"):
+        if "=" in paar:
             # Am ersten '=' aufteilen und Leerzeichen abschneiden
-            schluessel, wert = paar.split('=', 1)
+            schluessel, wert = paar.split("=", 1)
             ergebnis[schluessel.strip()] = wert.strip()
 
     return ergebnis
