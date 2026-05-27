@@ -545,37 +545,40 @@ def aufgabe_089_two_sum(werte: list[int], ziel: int) -> Optional[tuple[int, int]
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_090_anagramm(text_a: str, text_b: str) -> bool:
     """Prüfe, ob zwei Strings Anagramme sind."""
-    pass
+    return sorted(text_a.lower()) == sorted(text_b.lower())
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_091_zeichenhaeufigkeit_top(text: str, limit: int = 3) -> list[tuple[str, int]]:
     """Gib die häufigsten Zeichen mitsamt Häufigkeit zurück."""
-    pass
+    from collections import Counter
+    return Counter(text).most_common(limit)
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_092_tokenisiere_satz(text: str) -> list[str]:
     """Tokenisiere einen Satz grob nach Leer- und Satzzeichen."""
-    pass
+    import re
+    return re.findall(r'\w+|[^\w\s]', text)
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_093_title_case(text: str) -> str:
     """Setze jeden Wortanfang auf Großbuchstaben (Title Case)."""
-    pass
+    return text.title()
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_094_count_substring(text: str, substring: str) -> int:
     """Zähle nicht überlappende Vorkommen eines Substrings."""
-    pass
+    return text.count(substring)
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> list[str]:
     """Entferne Stopwörter aus einer Wortliste (case-insensitive)."""
-    pass
+    stopwords_lower = {word.lower() for word in stopwords}
+    return [word for word in worte if word.lower() not in stopwords_lower]
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
