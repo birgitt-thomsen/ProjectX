@@ -399,10 +399,10 @@ def aufgabe_060_binaer_zu_int(bits: str) -> int:
     pass
 
 
-# Gruppe: markus-niessen, kollodergrosse
+# Gruppe: kollodergrosse
 def aufgabe_061_int_zu_binaer(n: int) -> str:
     """Wandle eine Ganzzahl in einen Binärstring ohne Präfix um."""
-    pass
+    return f"{n:b}"
 
 
 # Gruppe: markus-niessen, kollodergrosse
@@ -411,10 +411,10 @@ def aufgabe_062_zahlenformat(n: float, nachkommastellen: int) -> str:
     pass
 
 
-# Gruppe: markus-niessen, kollodergrosse
+# Gruppe: kollodergrosse
 def aufgabe_063_clamp(wert: float, minimum: float, maximum: float) -> float:
     """Begrenze wert auf den Bereich [minimum, maximum]."""
-    pass
+    return max(minimum, min(wert, maximum))
 
 
 # Gruppe: markus-niessen, kollodergrosse
