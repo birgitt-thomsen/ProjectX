@@ -45,12 +45,12 @@ def aufgabe_006_capitalize_saetze(text: str) -> str:
     """Setze den ersten Buchstaben jedes Satzes auf Großbuchstaben."""
     if not text:
         return text
-
+    
     result = []
     capitalize_next = True
-
+    
     for char in text:
-        if char in ".!?":
+        if char in '.!?':
             result.append(char)
             capitalize_next = True
         elif char.isalpha() and capitalize_next:
@@ -60,8 +60,8 @@ def aufgabe_006_capitalize_saetze(text: str) -> str:
             result.append(char)
             if not char.isspace():
                 capitalize_next = False
-
-    return "".join(result)
+    
+    return ''.join(result)
 
 
 # Gruppe: patricznr1, ANY1-hub
@@ -82,7 +82,7 @@ def aufgabe_009_kuerze_text(text: str, limit: int) -> str:
     """Schneide den Text nach limit Zeichen ab und füge '...' an, falls nötig."""
     if len(text) <= limit:
         return text
-    return text[:limit] + "..."
+    return text[:limit] + '...'
 
 
 # Gruppe: patricznr1, ANY1-hub
@@ -114,13 +114,13 @@ def aufgabe_013_zaehle_ziffern(text: str) -> int:
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_014_entferne_whitespace(text: str) -> str:
     """Entferne alle Whitespaces (Leerzeichen, Tabs, Zeilenumbrüche)."""
-    return "".join(char for char in text if not char.isspace())
+    return ''.join(char for char in text if not char.isspace())
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_015_slugify(text: str) -> str:
     """Erzeuge einen einfachen Slug: Kleinbuchstaben, '-' statt Leerzeichen."""
-    return text.lower().replace(" ", "-")
+    return text.lower().replace(' ', '-')
 
 
 # Gruppe: patricznr1, ANY1-hub
@@ -198,8 +198,7 @@ def aufgabe_026_finde_index(werte: list[str], wert: str) -> int:
 
 
 # Gruppe: it-student, birgitt-thomsen
-def aufgabe_027_teilliste(werte: list[int], start: int, ende: int) -> list[
-    int]:
+def aufgabe_027_teilliste(werte: list[int], start: int, ende: int) -> list[int]:
     """Gib eine Teilliste von start (inkl.) bis ende (exkl.) zurück."""
     return werte[start:ende]
 
@@ -225,63 +224,106 @@ def aufgabe_030_flatten(liste_von_listen: list[list[int]]) -> list[int]:
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_031_merge_lists(a: list[int], b: list[int]) -> list[int]:
     """Mische zwei Listen abwechselnd (falls ungleich lang, Rest anhängen)."""
-    pass
+    ergebnis = []
+    # Bestimme die Länge der kürzeren Liste, um Exceptions zu vermeiden
+    min_laenge = min(len(a), len(b))
+
+    # Wechselnd Elemente hinzufügen
+    for i in range(min_laenge):
+        ergebnis.append(a[i])
+        ergebnis.append(b[i])
+
+    # Den verbleibenden Rest der längeren Liste anhängen
+    ergebnis.extend(a[min_laenge:])
+    ergebnis.extend(b[min_laenge:])
+
+    return ergebnis
+
+
+# --- Kurzer Testlauf ---
+# print(aufgabe_031_merge_lists([1, 3, 5], [2, 4, 6, 7, 8]))
+# Output: [1, 2, 3, 4, 5, 6, 7, 8]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_032_remove_none(werte: list[Optional[int]]) -> list[int]:
     """Entferne alle None-Werte aus der Liste."""
-    pass
+    return [w for w in werte if w is not None]
+
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_033_chunk_list(werte: list[int], groesse: int) -> list[list[int]]:
-    """Zerlege die Liste in Blöcke der Länge groesse."""
-    pass
+	"""Zerlege die Liste in Blöcke der Länge groesse."""
+	# Falls die Größe ungültig ist, leere Liste zurückgeben um Endlosschleifen zu vermeiden
+	if groesse <= 0:
+		return []
+
+	# Nutzt Slicing in Schritten der gewünschten Größe
+	return [werte[i:i + groesse] for i in range(0, len(werte), groesse)]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_034_rotate_left(werte: list[int], schritte: int) -> list[int]:
-    """Rotiert die Liste um schritte nach links."""
-    pass
+	"""Rotiert die Liste um schritte nach links."""
+	if not werte:
+		return []
+
+	# Modulo-Operation fängt Schritte ab, die größer als die Liste selbst sind
+	effektive_schritte = schritte % len(werte)
+
+	# Schneidet die Liste auf und setzt sie rotiert wieder zusammen
+	return werte[effektive_schritte:] + werte[:effektive_schritte]
 
 
 # Gruppe: it-student, birgitt-thomsen
-def aufgabe_035_split_even_odd(werte: list[int]) -> tuple[
-    list[int], list[int]]:
-    """Trenne die Liste in gerade und ungerade Zahlen auf."""
-    pass
+def aufgabe_035_split_even_odd(werte: list[int]) -> tuple[list[int], list[int]]:
+	"""Trenne die Liste in gerade und ungerade Zahlen auf."""
+	gerade = [w for w in werte if w % 2 == 0]
+	ungerade = [w for w in werte if w % 2 != 0]
+	return gerade, ungerade
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_036_dict_keys_sort(data: dict[str, int]) -> list[str]:
-    """Gib sortierte Schlüssel eines Dicts zurück."""
-    pass
+	"""Gib sortierte Schlüssel eines Dicts zurück."""
+	# sorted() gibt standardmäßig die sortierten Keys eines Dicts zurück
+	return sorted(data.keys())
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_037_dict_values_sum(data: dict[str, int]) -> int:
-    """Summiere alle Werte in einem Dict."""
-    pass
+	"""Summiere alle Werte in einem Dict."""
+	return sum(data.values())
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_038_invert_dict(data: dict[str, str]) -> dict[str, str]:
-    """Tausche Schlüssel und Werte (Fehler bei Duplikaten klären)."""
-    pass
+	"""Tausche Schlüssel und Werte (Fehler bei Duplikaten klären)."""
+	# Hinweis zum Duplikat-Problem: Bei doppelten Werten überschreibt in Python
+	# der spätere Eintrag den früheren im neuen Dict.
+	return {wert: schluessel for schluessel, wert in data.items()}
 
 
 # Gruppe: it-student, birgitt-thomsen
-def aufgabe_039_merge_dicts(a: dict[str, Any], b: dict[str, Any]) -> dict[
-    str, Any]:
-    """Führe zwei Dicts zusammen, b überschreibt a bei Konflikten."""
-    pass
+def aufgabe_039_merge_dicts(a: dict[str, Any], b: dict[str, Any]) -> dict[str, Any]:
+	"""Führe zwei Dicts zusammen, b überschreibt a bei Konflikten."""
+	# Der Merge-Operator | (ab Python 3.9) führt Dicts genau so zusammen,
+	# dass das rechte Dict das linke bei Überschneidungen überschreibt.
+	return a | b
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_040_count_letters(text: str) -> dict[str, int]:
-    """Zähle, wie oft jeder Buchstabe im Text vorkommt (case-insensitive)."""
-    pass
+	"""Zähle, wie oft jeder Buchstabe im Text vorkommt (case-insensitive)."""
+	ergebnis = {}
+	# Text in Kleinbuchstaben umwandeln für Case-Insensitivity
+	for zeichen in text.lower():
+		# Nur echte Buchstaben zählen (Satzzeichen/Leerzeichen ignorieren)
+		if zeichen.isalpha():
+			# dict.get(schluessel, standardwert) verhindert KeyError
+			ergebnis[zeichen] = ergebnis.get(zeichen, 0) + 1
+	return ergebnis
 
 
 # Gruppe: Appeyron, esterplaza
@@ -318,12 +360,8 @@ def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_043_dict_without_keys(
-<<<<<<< HEAD
-        data: dict[str, int], keys: list[str]
-=======
     data: dict[str, int],
     keys: list[str]
->>>>>>> 57258a9836f6b0de0a685c55b3bd8d4bce30e06c
 ) -> dict[str, int]:
     """Gib ein neues Dict ohne die angegebenen Schlüssel zurück."""
 
@@ -335,15 +373,13 @@ def aufgabe_043_dict_without_keys(
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_044_find_key_by_value(data: dict[str, int], value: int) -> \
-Optional[str]:
+def aufgabe_044_find_key_by_value(data: dict[str, int], value: int) -> Optional[str]:
     """Finde den ersten Schlüssel, dessen Wert value entspricht."""
     pass
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_045_safe_get(data: dict[str, Any], path: list[str]) -> Optional[
-    Any]:
+def aufgabe_045_safe_get(data: dict[str, Any], path: list[str]) -> Optional[Any]:
     """Greife sicher auf verschachtelte Dicts zu, None wenn Pfad fehlt."""
     pass
 
@@ -367,8 +403,7 @@ def aufgabe_048_set_difference(a: set[int], b: set[int]) -> set[int]:
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_049_remove_duplicates_preserve_order(werte: list[str]) -> list[
-    str]:
+def aufgabe_049_remove_duplicates_preserve_order(werte: list[str]) -> list[str]:
     """Entferne doppelte Einträge aus einer Stringliste, Reihenfolge behalten."""
     pass
 
@@ -430,9 +465,7 @@ def aufgabe_057_kgv(a: int, b: int) -> int:
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_058_durchschnitt_gewichtet(
-        werte: list[float], gewichte: list[float]
-) -> float:
+def aufgabe_058_durchschnitt_gewichtet(werte: list[float], gewichte: list[float]) -> float:
     """Berechne den gewichteten Mittelwert, gleiche Länge vorausgesetzt."""
     pass
 
@@ -482,17 +515,17 @@ def aufgabe_065_skaliere(werte: list[float], faktor: float) -> list[float]:
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_066_moving_average(werte: list[float], fenster: int) -> list[
-    float]:
+def aufgabe_066_moving_average(werte: list[float], fenster: int) -> list[float]:
     """Berechne gleitende Durchschnitte mit Fenstergröße fenster."""
-    pass
+    moving_average = []
+    for index in range(fenster, len(werte)+1):
+        current_average = sum(werte[index-fenster:index]) / fenster
+        moving_average.append(current_average)
+    return moving_average
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_067_linear_map(
-        wert: float, alt_min: float, alt_max: float, neu_min: float,
-        neu_max: float
-) -> float:
+def aufgabe_067_linear_map(wert: float, alt_min: float, alt_max: float, neu_min: float, neu_max: float) -> float:
     """Mappe wert linear vom Bereich alt_min..alt_max nach neu_min..neu_max."""
     pass
 
@@ -516,8 +549,7 @@ def aufgabe_070_summenliste(werte: list[int]) -> list[int]:
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_071_zip_to_dict(keys: list[str], values: list[int]) -> dict[
-    str, int]:
+def aufgabe_071_zip_to_dict(keys: list[str], values: list[int]) -> dict[str, int]:
     """Baue ein Dict aus Schlüsseln und Werten gleicher Länge."""
     pass
 
@@ -529,38 +561,31 @@ def aufgabe_072_swap_keys_values(data: dict[str, str]) -> dict[str, str]:
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_073_filter_dict_by_value(
-        data: dict[str, int], minimum: int
-) -> dict[str, int]:
+def aufgabe_073_filter_dict_by_value(data: dict[str, int], minimum: int) -> dict[str, int]:
     """Filtere Einträge, deren Wert mindestens minimum ist."""
     pass
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_074_werte_aufaddieren(datensaetze: list[dict[str, int]]) -> dict[
-    str, int]:
+def aufgabe_074_werte_aufaddieren(datensaetze: list[dict[str, int]]) -> dict[str, int]:
     """Summiere Werte gleicher Schlüssel über mehrere Dicts."""
     pass
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_075_dict_diff(a: dict[str, int], b: dict[str, int]) -> dict[
-    str, str]:
+def aufgabe_075_dict_diff(a: dict[str, int], b: dict[str, int]) -> dict[str, str]:
     """Vergleiche a und b: 'gleich', 'nur_a', 'nur_b', 'anders' pro Schlüssel."""
     pass
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_076_sortiere_tupel_nach_index(
-        eintraege: list[tuple[Any, ...]], index: int = 0
-) -> list[tuple[Any, ...]]:
+def aufgabe_076_sortiere_tupel_nach_index(eintraege: list[tuple[Any, ...]], index: int = 0) -> list[tuple[Any, ...]]:
     """Sortiere eine Liste von Tupeln nach dem angegebenen Index."""
     pass
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_077_transponiere_matrix(matrix: list[list[int]]) -> list[
-    list[int]]:
+def aufgabe_077_transponiere_matrix(matrix: list[list[int]]) -> list[list[int]]:
     """Transponiere eine rechteckige Matrix."""
     pass
 
@@ -578,16 +603,13 @@ def aufgabe_079_spaltenmittel(matrix: list[list[float]]) -> list[float]:
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_080_matrix_multiply(
-        a: list[list[int]], b: list[list[int]]
-) -> list[list[int]]:
+def aufgabe_080_matrix_multiply(a: list[list[int]], b: list[list[int]]) -> list[list[int]]:
     """Multipliziere zwei Matrizen (gültige Dimensionen vorausgesetzt)."""
     pass
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_081_filter_worte_laenge(worte: list[str], minimum: int) -> list[
-    str]:
+def aufgabe_081_filter_worte_laenge(worte: list[str], minimum: int) -> list[str]:
     """Filtere Wörter, deren Länge mindestens minimum beträgt."""
     return [wort for wort in worte if len(wort) >= minimum]
 
@@ -649,8 +671,7 @@ def aufgabe_088_binary_search(werte: list[int], ziel: int) -> int:
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_089_two_sum(werte: list[int], ziel: int) -> Optional[
-    tuple[int, int]]:
+def aufgabe_089_two_sum(werte: list[int], ziel: int) -> Optional[tuple[int, int]]:
     """Finde zwei Indizes, deren Werte zusammen ziel ergeben."""
     pass
 
@@ -662,9 +683,7 @@ def aufgabe_090_anagramm(text_a: str, text_b: str) -> bool:
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_091_zeichenhaeufigkeit_top(
-        text: str, limit: int = 3
-) -> list[tuple[str, int]]:
+def aufgabe_091_zeichenhaeufigkeit_top(text: str, limit: int = 3) -> list[tuple[str, int]]:
     """Gib die häufigsten Zeichen mitsamt Häufigkeit zurück."""
     pass
 
@@ -688,8 +707,7 @@ def aufgabe_094_count_substring(text: str, substring: str) -> int:
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> \
-list[str]:
+def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> list[str]:
     """Entferne Stopwörter aus einer Wortliste (case-insensitive)."""
     pass
 
@@ -722,3 +740,4 @@ def aufgabe_099_parse_kv(text: str) -> dict[str, str]:
 def aufgabe_100_teile_in_abschnitte(text: str, breite: int) -> list[str]:
     """Zerlege einen Text in Abschnitte fester Breite."""
     pass
+
