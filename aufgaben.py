@@ -252,29 +252,28 @@ def aufgabe_032_remove_none(werte: list[Optional[int]]) -> list[int]:
     return [w for w in werte if w is not None]
 
 
-
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_033_chunk_list(werte: list[int], groesse: int) -> list[list[int]]:
-	"""Zerlege die Liste in Blöcke der Länge groesse."""
-	# Falls die Größe ungültig ist, leere Liste zurückgeben um Endlosschleifen zu vermeiden
-	if groesse <= 0:
-		return []
+    """Zerlege die Liste in Blöcke der Länge groesse."""
+    # Falls die Größe ungültig ist, leere Liste zurückgeben um Endlosschleifen zu vermeiden
+    if groesse <= 0:
+        return []
 
-	# Nutzt Slicing in Schritten der gewünschten Größe
-	return [werte[i:i + groesse] for i in range(0, len(werte), groesse)]
+    # Nutzt Slicing in Schritten der gewünschten Größe
+    return [werte[i:i + groesse] for i in range(0, len(werte), groesse)]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_034_rotate_left(werte: list[int], schritte: int) -> list[int]:
-	"""Rotiert die Liste um schritte nach links."""
-	if not werte:
-		return []
+    """Rotiert die Liste um schritte nach links."""
+    if not werte:
+        return []
 
-	# Modulo-Operation fängt Schritte ab, die größer als die Liste selbst sind
-	effektive_schritte = schritte % len(werte)
+    # Modulo-Operation fängt Schritte ab, die größer als die Liste selbst sind
+    effektive_schritte = schritte % len(werte)
 
-	# Schneidet die Liste auf und setzt sie rotiert wieder zusammen
-	return werte[effektive_schritte:] + werte[:effektive_schritte]
+    # Schneidet die Liste auf und setzt sie rotiert wieder zusammen
+    return werte[effektive_schritte:] + werte[:effektive_schritte]
 
 
 # Gruppe: it-student, birgitt-thomsen
@@ -286,44 +285,45 @@ def aufgabe_035_split_even_odd(werte: list[int]) -> tuple[
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_036_dict_keys_sort(data: dict[str, int]) -> list[str]:
-	"""Gib sortierte Schlüssel eines Dicts zurück."""
-	# sorted() gibt standardmäßig die sortierten Keys eines Dicts zurück
-	return sorted(data.keys())
+    """Gib sortierte Schlüssel eines Dicts zurück."""
+    # sorted() gibt standardmäßig die sortierten Keys eines Dicts zurück
+    return sorted(data.keys())
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_037_dict_values_sum(data: dict[str, int]) -> int:
-	"""Summiere alle Werte in einem Dict."""
-	return sum(data.values())
+    """Summiere alle Werte in einem Dict."""
+    return sum(data.values())
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_038_invert_dict(data: dict[str, str]) -> dict[str, str]:
-	"""Tausche Schlüssel und Werte (Fehler bei Duplikaten klären)."""
-	# Hinweis zum Duplikat-Problem: Bei doppelten Werten überschreibt in Python
-	# der spätere Eintrag den früheren im neuen Dict.
-	return {wert: schluessel for schluessel, wert in data.items()}
+    """Tausche Schlüssel und Werte (Fehler bei Duplikaten klären)."""
+    # Hinweis zum Duplikat-Problem: Bei doppelten Werten überschreibt in Python
+    # der spätere Eintrag den früheren im neuen Dict.
+    return {wert: schluessel for schluessel, wert in data.items()}
 
 
 # Gruppe: it-student, birgitt-thomsen
-def aufgabe_039_merge_dicts(a: dict[str, Any], b: dict[str, Any]) -> dict[str, Any]:
-	"""Führe zwei Dicts zusammen, b überschreibt a bei Konflikten."""
-	# Der Merge-Operator | (ab Python 3.9) führt Dicts genau so zusammen,
-	# dass das rechte Dict das linke bei Überschneidungen überschreibt.
-	return a | b
+def aufgabe_039_merge_dicts(a: dict[str, Any], b: dict[str, Any]) -> dict[
+    str, Any]:
+    """Führe zwei Dicts zusammen, b überschreibt a bei Konflikten."""
+    # Der Merge-Operator | (ab Python 3.9) führt Dicts genau so zusammen,
+    # dass das rechte Dict das linke bei Überschneidungen überschreibt.
+    return a | b
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_040_count_letters(text: str) -> dict[str, int]:
-	"""Zähle, wie oft jeder Buchstabe im Text vorkommt (case-insensitive)."""
-	ergebnis = {}
-	# Text in Kleinbuchstaben umwandeln für Case-Insensitivity
-	for zeichen in text.lower():
-		# Nur echte Buchstaben zählen (Satzzeichen/Leerzeichen ignorieren)
-		if zeichen.isalpha():
-			# dict.get(schluessel, standardwert) verhindert KeyError
-			ergebnis[zeichen] = ergebnis.get(zeichen, 0) + 1
-	return ergebnis
+    """Zähle, wie oft jeder Buchstabe im Text vorkommt (case-insensitive)."""
+    ergebnis = {}
+    # Text in Kleinbuchstaben umwandeln für Case-Insensitivity
+    for zeichen in text.lower():
+        # Nur echte Buchstaben zählen (Satzzeichen/Leerzeichen ignorieren)
+        if zeichen.isalpha():
+            # dict.get(schluessel, standardwert) verhindert KeyError
+            ergebnis[zeichen] = ergebnis.get(zeichen, 0) + 1
+    return ergebnis
 
 
 # Gruppe: Appeyron, esterplaza
@@ -360,8 +360,8 @@ def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_043_dict_without_keys(
-    data: dict[str, int],
-    keys: list[str]
+        data: dict[str, int],
+        keys: list[str]
 ) -> dict[str, int]:
     """Gib ein neues Dict ohne die angegebenen Schlüssel zurück."""
 
@@ -374,7 +374,7 @@ def aufgabe_043_dict_without_keys(
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_044_find_key_by_value(data: dict[str, int], value: int) -> \
-Optional[str]:
+        Optional[str]:
     """Finde den ersten Schlüssel, dessen Wert value entspricht."""
     for key, current_value in data.items():
         if current_value == value:
@@ -458,7 +458,12 @@ def aufgabe_053_fibonacci(n: int) -> list[int]:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_054_ist_primzahl(n: int) -> bool:
     """Prüfe, ob n eine Primzahl ist."""
-    pass
+    if n <= 1:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
 
 # Gruppe: Appeyron, esterplaza
@@ -532,11 +537,12 @@ def aufgabe_065_skaliere(werte: list[float], faktor: float) -> list[float]:
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_066_moving_average(werte: list[float], fenster: int) -> list[float]:
+def aufgabe_066_moving_average(werte: list[float], fenster: int) -> list[
+    float]:
     """Berechne gleitende Durchschnitte mit Fenstergröße fenster."""
     moving_average = []
-    for index in range(fenster, len(werte)+1):
-        current_average = sum(werte[index-fenster:index]) / fenster
+    for index in range(fenster, len(werte) + 1):
+        current_average = sum(werte[index - fenster:index]) / fenster
         moving_average.append(current_average)
     return moving_average
 
@@ -749,7 +755,7 @@ def aufgabe_094_count_substring(text: str, substring: str) -> int:
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> \
-list[str]:
+        list[str]:
     """Entferne Stopwörter aus einer Wortliste (case-insensitive)."""
     pass
 
