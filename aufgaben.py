@@ -284,13 +284,33 @@ def aufgabe_040_count_letters(text: str) -> dict[str, int]:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_041_group_by_length(worte: list[str]) -> dict[int, list[str]]:
     """Gruppiere Wörter nach ihrer Länge."""
-    pass
+
+    gruppierte_woerter = {}
+
+    for wort in worte:
+        wortlaenge = len(wort)
+
+        if wortlaenge not in gruppierte_woerter:
+            gruppierte_woerter[wortlaenge] = []
+
+        gruppierte_woerter[wortlaenge].append(wort)
+
+    return gruppierte_woerter
 
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
     """Erstelle eine Häufigkeitstabelle für Wörter."""
-    pass
+
+    worthaeufigkeit = {}
+
+    for wort in worte:
+        if wort not in worthaeufigkeit:
+            worthaeufigkeit[wort] = 0
+        if wort in worthaeufigkeit:
+            worthaeufigkeit[wort] += 1
+
+    return worthaeufigkeit
 
 
 # Gruppe: Appeyron, esterplaza
