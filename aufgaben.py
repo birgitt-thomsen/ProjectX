@@ -524,7 +524,12 @@ def aufgabe_084_vokale_entfernen(text: str) -> str:
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_085_erste_wiederholung(werte: list[Any]) -> Optional[Any]:
     """Finde das erste Element, das mehr als einmal vorkommt."""
-    pass
+    gesehen = set()
+    for wert in werte:
+        if wert in gesehen:
+            return wert
+        gesehen.add(wert)
+    return None
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
