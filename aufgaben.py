@@ -517,7 +517,8 @@ def aufgabe_083_count_characters_ignore_case(text: str) -> dict[str, int]:
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_084_vokale_entfernen(text: str) -> str:
     """Entferne alle Vokale aus dem Text."""
-    pass
+    vokale = "aeiouAEIOU"
+    return "".join(zeichen for zeichen in text if zeichen not in vokale)
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
