@@ -584,29 +584,65 @@ def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> list
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_096_ersetzungen_kette(text: str, mapping: dict[str, str]) -> str:
     """Führe mehrere Ersetzungen gemäß mapping nacheinander aus."""
-    pass
+    for alter_wert, neuer_wert in mapping.items():
+        text = text.replace(alter_wert, neuer_wert)
+    return text
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_097_validiere_email(text: str) -> bool:
     """Prüfe grob, ob ein String wie eine E-Mail-Adresse aussieht."""
-    pass
+    # Regel 1: Es muss genau ein '@'-Zeichen existieren
+    if text.count('@') != 1:
+        return False
+
+    # Wir teilen den Text am '@' in Lokalteil und Domainteil
+    lokalteil, domainteil = text.split('@')
+
+    # Regel 2: Der Teil vor dem '@' darf nicht leer sein
+    if not lokalteil:
+        return False
+
+    # Regel 3: Im Domainteil muss mindestens ein Punkt existieren
+    if '.' not in domainteil:
+        return False
+
+    # Regel 4: Der Domainteil darf nicht mit einem Punkt starten oder enden
+    if domainteil.startswith('.') or domainteil.endswith('.'):
+        return False
+
+    return True
+
+
+from urllib.parse import urlparse
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_098_extract_domain(url: str) -> str:
     """Extrahiere die Domain aus einer URL (ohne Schema/Path/Query)."""
-    pass
+    # Falls die URL kein Schema (wie http://) hat, fügen wir es kurz hinzu,
+    # damit urlparse sie korrekt als Webadresse erkennt
+    if not url.startswith(('http://', 'https://')):
+        url = 'https://' + url
+
+    return urlparse(url).netloc
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_099_parse_kv(text: str) -> dict[str, str]:
     """Parse einen Text wie 'a=1;b=2' in ein Dict."""
-    pass
+    if not text.strip():
+        return {}
+
+    return {schluessel.strip(): wert.strip() for paar in text.split(';') if '=' in paar for schluessel, wert in
+            [paar.split('=', 1)]}
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_100_teile_in_abschnitte(text: str, breite: int) -> list[str]:
     """Zerlege einen Text in Abschnitte fester Breite."""
-    pass
+    if breite <= 0:
+        return [text] if text else []
 
+    # Springe in 'breite'-Schritten durch den Text und schneide die Stücke aus
+    return [text[i:i + breite] for i in range(0, len(text), breite)]
