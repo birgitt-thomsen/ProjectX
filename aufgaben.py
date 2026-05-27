@@ -517,8 +517,8 @@ def aufgabe_063_clamp(wert: float, minimum: float, maximum: float) -> float:
 def aufgabe_064_normiere(werte: list[float]) -> list[float]:
     """Skaliere Werte in den Bereich 0..1 (min-max-Normierung)."""
     minimum = min(werte)
-     maximum = max(werte)
-     return [(wert - minimum) / (maximum - minimum) for wert in werte]
+    maximum = max(werte)
+    return [(wert - minimum) / (maximum - minimum) for wert in werte]
 
 
 # Gruppe: markus-niessen, kollodergrosse
@@ -561,7 +561,14 @@ def aufgabe_069_repeat_text(text: str, anzahl: int) -> str:
 # Gruppe: markus-niessen, kollodergrosse
 def aufgabe_070_summenliste(werte: list[int]) -> list[int]:
     """Gib die kumulative Summe der Werte zurück."""
-    pass
+    summenliste = []
+    aktuelle_summe = 0
+
+    for wert in werte:
+        aktuelle_summe += wert
+        summenliste.append(aktuelle_summe)
+
+    return summenliste
 
 
 # Gruppe: markus-niessen, kollodergrosse
