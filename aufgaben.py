@@ -162,62 +162,64 @@ def aufgabe_020_sortiere_aufsteigend(zahlen: list[int]) -> list[int]:
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_021_sortiere_absteigend(zahlen: list[int]) -> list[int]:
     """Gib eine neue Liste mit absteigend sortierten Zahlen zurück."""
-    pass
+    return sorted(zahlen, reverse=True)
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_022_filter_gerade(zahlen: list[int]) -> list[int]:
     """Filtere alle geraden Zahlen aus der Liste."""
-    pass
+    return [zahl for zahl in zahlen if zahl % 2 == 0]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_023_filter_ungerade(zahlen: list[int]) -> list[int]:
     """Filtere alle ungeraden Zahlen aus der Liste."""
-    pass
+    return [zahl for zahl in zahlen if zahl % 2 != 0]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_024_quadrate(zahlen: list[int]) -> list[int]:
     """Gib eine Liste mit Quadraten aller Zahlen zurück."""
-    pass
+    return [zahl ** 2 for zahl in zahlen]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_025_unique_werte(zahlen: list[int]) -> list[int]:
     """Entferne Duplikate, erhalte die erste Reihenfolge."""
-    pass
+    return list(dict.fromkeys(zahlen))
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_026_finde_index(werte: list[str], wert: str) -> int:
     """Finde den Index von wert, -1 wenn nicht vorhanden."""
-    pass
+    if wert in werte:
+        return werte.index(wert)
+    return -1
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_027_teilliste(werte: list[int], start: int, ende: int) -> list[
     int]:
     """Gib eine Teilliste von start (inkl.) bis ende (exkl.) zurück."""
-    pass
+    return werte[start:ende]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_028_zaehle_vorkommen(werte: list[str], gesucht: str) -> int:
     """Zähle, wie oft gesucht in der Liste vorkommt."""
-    pass
+    return werte.count(gesucht)
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_029_drehe_liste(werte: list[Any]) -> list[Any]:
     """Drehe die Reihenfolge der Liste um."""
-    pass
+    return werte[::-1]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_030_flatten(liste_von_listen: list[list[int]]) -> list[int]:
     """Führe eine verschachtelte Liste zu einer flachen Liste zusammen."""
-    pass
+    return [zahl for liste in liste_von_listen for zahl in liste]
 
 
 # Gruppe: it-student, birgitt-thomsen
@@ -285,21 +287,51 @@ def aufgabe_040_count_letters(text: str) -> dict[str, int]:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_041_group_by_length(worte: list[str]) -> dict[int, list[str]]:
     """Gruppiere Wörter nach ihrer Länge."""
-    pass
+
+    gruppierte_woerter = {}
+
+    for wort in worte:
+        wortlaenge = len(wort)
+
+        if wortlaenge not in gruppierte_woerter:
+            gruppierte_woerter[wortlaenge] = []
+
+        gruppierte_woerter[wortlaenge].append(wort)
+
+    return gruppierte_woerter
 
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
     """Erstelle eine Häufigkeitstabelle für Wörter."""
-    pass
+
+    worthaeufigkeit = {}
+
+    for wort in worte:
+        if wort not in worthaeufigkeit:
+            worthaeufigkeit[wort] = 0
+        if wort in worthaeufigkeit:
+            worthaeufigkeit[wort] += 1
+
+    return worthaeufigkeit
 
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_043_dict_without_keys(
+<<<<<<< HEAD
         data: dict[str, int], keys: list[str]
+=======
+    data: dict[str, int],
+    keys: list[str]
+>>>>>>> 57258a9836f6b0de0a685c55b3bd8d4bce30e06c
 ) -> dict[str, int]:
     """Gib ein neues Dict ohne die angegebenen Schlüssel zurück."""
-    pass
+
+    return {
+        key: value
+        for key, value in data.items()
+        if key not in keys
+    }
 
 
 # Gruppe: Appeyron, esterplaza
@@ -426,7 +458,7 @@ def aufgabe_061_int_zu_binaer(n: int) -> str:
 # Gruppe: markus-niessen, kollodergrosse
 def aufgabe_062_zahlenformat(n: float, nachkommastellen: int) -> str:
     """Formatiere eine Zahl mit fester Anzahl Nachkommastellen."""
-    pass
+    return f"{n:.{nachkommastellen}f}"
 
 
 # Gruppe: markus-niessen, kollodergrosse
@@ -438,7 +470,9 @@ def aufgabe_063_clamp(wert: float, minimum: float, maximum: float) -> float:
 # Gruppe: markus-niessen, kollodergrosse
 def aufgabe_064_normiere(werte: list[float]) -> list[float]:
     """Skaliere Werte in den Bereich 0..1 (min-max-Normierung)."""
-    pass
+    minimum = min(werte)
+     maximum = max(werte)
+     return [(wert - minimum) / (maximum - minimum) for wert in werte]
 
 
 # Gruppe: markus-niessen, kollodergrosse
