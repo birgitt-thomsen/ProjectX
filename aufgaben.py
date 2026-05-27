@@ -315,16 +315,8 @@ def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
 
 # Gruppe: Appeyron, esterplaza
 def aufgabe_043_dict_without_keys(
-<<<<<<< HEAD
-    data: dict[str, int], keys: list[str]
-=======
-<<<<<<< HEAD
-        data: dict[str, int], keys: list[str]
-=======
     data: dict[str, int],
     keys: list[str]
->>>>>>> 57258a9836f6b0de0a685c55b3bd8d4bce30e06c
->>>>>>> master
 ) -> dict[str, int]:
     """Gib ein neues Dict ohne die angegebenen Schlüssel zurück."""
 
@@ -400,7 +392,15 @@ def aufgabe_052_factorial(n: int) -> int:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_053_fibonacci(n: int) -> list[int]:
     """Gib eine Liste der ersten n Fibonacci-Zahlen zurück."""
-    pass
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    fibs = [0, 1]
+    for _ in range(2, n):
+        next_number = fibs[-1] + fibs[-2]
+        fibs.append(next_number)
+    return fibs
 
 
 # Gruppe: Appeyron, esterplaza
