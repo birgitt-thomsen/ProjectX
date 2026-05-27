@@ -464,7 +464,11 @@ def aufgabe_065_skaliere(werte: list[float], faktor: float) -> list[float]:
 # Gruppe: markus-niessen, kollodergrosse
 def aufgabe_066_moving_average(werte: list[float], fenster: int) -> list[float]:
     """Berechne gleitende Durchschnitte mit Fenstergröße fenster."""
-    pass
+    moving_average = []
+    for index in range(fenster, len(werte)+1):
+        current_average = sum(werte[index-fenster:index]) / fenster
+        moving_average.append(current_average)
+    return moving_average
 
 
 # Gruppe: markus-niessen, kollodergrosse
