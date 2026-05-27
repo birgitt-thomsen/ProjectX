@@ -11,121 +11,152 @@ from typing import Any, Optional
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_001_spiegle_text(text: str) -> str:
     """Gib den Text rückwärts zurück."""
-    pass
+    return text[::-1]
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_002_zaehle_vokale(text: str) -> int:
     """Zähle die Anzahl der Vokale im Text (a, e, i, o, u)."""
-    pass
+    vokale = "aeiouAEIOU"
+    return sum(1 for char in text if char in vokale)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_003_ist_palindrom(text: str) -> bool:
     """Prüfe, ob der Text ein Palindrom ist (Groß/Klein ignorieren)."""
-    pass
+    clean_text = text.lower()
+    return clean_text == clean_text[::-1]
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_004_zu_grossbuchstaben(text: str) -> str:
     """Wandle alle Zeichen in Großbuchstaben um."""
-    pass
+    return text.upper()
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_005_zu_kleinbuchstaben(text: str) -> str:
     """Wandle alle Zeichen in Kleinbuchstaben um."""
-    pass
+    return text.lower()
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_006_capitalize_saetze(text: str) -> str:
     """Setze den ersten Buchstaben jedes Satzes auf Großbuchstaben."""
-    pass
+    if not text:
+        return text
+    
+    result = []
+    capitalize_next = True
+    
+    for char in text:
+        if char in '.!?':
+            result.append(char)
+            capitalize_next = True
+        elif char.isalpha() and capitalize_next:
+            result.append(char.upper())
+            capitalize_next = False
+        else:
+            result.append(char)
+            if not char.isspace():
+                capitalize_next = False
+    
+    return ''.join(result)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_007_ersetze_zeichen(text: str, alt: str, neu: str) -> str:
     """Ersetze alle Vorkommen von alt durch neu in text."""
-    pass
+    return text.replace(alt, neu)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_008_zaehle_wort(text: str, wort: str) -> int:
     """Zähle, wie oft wort im Text vorkommt (wortgenau)."""
-    pass
+    worte = text.split()
+    return worte.count(wort)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_009_kuerze_text(text: str, limit: int) -> str:
     """Schneide den Text nach limit Zeichen ab und füge '...' an, falls nötig."""
-    pass
+    if len(text) <= limit:
+        return text
+    return text[:limit] + '...'
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_010_teile_worte(text: str) -> list[str]:
     """Zerlege einen Satz in Wörter, getrennt nach Leerzeichen."""
-    pass
+    return text.split()
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_011_verbinde_worte(worte: list[str], trenner: str = ", ") -> str:
     """Verbinde Wörter mit dem angegebenen Trenner zu einem String."""
-    pass
+    return trenner.join(worte)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_012_laengstes_wort(worte: list[str]) -> Optional[str]:
     """Finde das längste Wort in der Liste, None bei leerer Liste."""
-    pass
+    if not worte:
+        return None
+    return max(worte, key=len)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_013_zaehle_ziffern(text: str) -> int:
     """Zähle alle Zeichen im Text, die Ziffern sind."""
-    pass
+    return sum(1 for char in text if char.isdigit())
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_014_entferne_whitespace(text: str) -> str:
     """Entferne alle Whitespaces (Leerzeichen, Tabs, Zeilenumbrüche)."""
-    pass
+    return ''.join(char for char in text if not char.isspace())
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_015_slugify(text: str) -> str:
     """Erzeuge einen einfachen Slug: Kleinbuchstaben, '-' statt Leerzeichen."""
-    pass
+    return text.lower().replace(' ', '-')
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_016_summe_liste(zahlen: list[int]) -> int:
     """Summiere alle Zahlen in der Liste."""
-    pass
+    return sum(zahlen)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_017_mittelwert(zahlen: list[float]) -> float:
     """Berechne den arithmetischen Mittelwert der Liste."""
-    pass
+    if not zahlen:
+        return 0.0
+    return sum(zahlen) / len(zahlen)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_018_max_wert(zahlen: list[int]) -> Optional[int]:
     """Gib den größten Wert zurück, None bei leerer Liste."""
-    pass
+    if not zahlen:
+        return None
+    return max(zahlen)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_019_min_wert(zahlen: list[int]) -> Optional[int]:
     """Gib den kleinsten Wert zurück, None bei leerer Liste."""
-    pass
+    if not zahlen:
+        return None
+    return min(zahlen)
 
 
 # Gruppe: patricznr1, ANY1-hub
 def aufgabe_020_sortiere_aufsteigend(zahlen: list[int]) -> list[int]:
     """Gib eine neue Liste mit aufsteigend sortierten Zahlen zurück."""
-    pass
+    return sorted(zahlen)
 
 
 # Gruppe: it-student, birgitt-thomsen
@@ -519,19 +550,27 @@ def aufgabe_080_matrix_multiply(
 def aufgabe_081_filter_worte_laenge(worte: list[str], minimum: int) -> list[
     str]:
     """Filtere Wörter, deren Länge mindestens minimum beträgt."""
-    pass
+    return [wort for wort in worte if len(wort) >= minimum]
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_082_join_ohne_letztes(worte: list[str]) -> str:
     """Verbinde Wörter mit Komma, ersetze das letzte Komma durch ' und '."""
-    pass
+    if not worte:
+        return ""
+    if len(worte) == 1:
+        return worte[0]
+
+    return ", ".join(worte[:-1]) + " und " + worte[-1]
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_083_count_characters_ignore_case(text: str) -> dict[str, int]:
     """Zähle Zeichenhäufigkeiten ohne zwischen Groß/Klein zu unterscheiden."""
-    pass
+    ergebnis = {}
+    for zeichen in text.lower():
+        ergebnis[zeichen] = ergebnis.get(zeichen, 0) + 1
+    return ergebnis
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
