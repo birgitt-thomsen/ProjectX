@@ -620,65 +620,104 @@ def aufgabe_089_two_sum(werte: list[int], ziel: int) -> Optional[tuple[int, int]
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_090_anagramm(text_a: str, text_b: str) -> bool:
     """Prüfe, ob zwei Strings Anagramme sind."""
-    pass
+    return sorted(text_a.lower()) == sorted(text_b.lower())
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_091_zeichenhaeufigkeit_top(text: str, limit: int = 3) -> list[tuple[str, int]]:
     """Gib die häufigsten Zeichen mitsamt Häufigkeit zurück."""
-    pass
+    from collections import Counter
+    return Counter(text).most_common(limit)
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_092_tokenisiere_satz(text: str) -> list[str]:
     """Tokenisiere einen Satz grob nach Leer- und Satzzeichen."""
-    pass
+    import re
+    return re.findall(r'\w+|[^\w\s]', text)
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_093_title_case(text: str) -> str:
     """Setze jeden Wortanfang auf Großbuchstaben (Title Case)."""
-    pass
+    return text.title()
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_094_count_substring(text: str, substring: str) -> int:
     """Zähle nicht überlappende Vorkommen eines Substrings."""
-    pass
+    return text.count(substring)
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> list[str]:
     """Entferne Stopwörter aus einer Wortliste (case-insensitive)."""
-    pass
+    stopwords_lower = {word.lower() for word in stopwords}
+    return [word for word in worte if word.lower() not in stopwords_lower]
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_096_ersetzungen_kette(text: str, mapping: dict[str, str]) -> str:
     """Führe mehrere Ersetzungen gemäß mapping nacheinander aus."""
-    pass
+    for alter_wert, neuer_wert in mapping.items():
+        text = text.replace(alter_wert, neuer_wert)
+    return text
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_097_validiere_email(text: str) -> bool:
     """Prüfe grob, ob ein String wie eine E-Mail-Adresse aussieht."""
-    pass
+    # Regel 1: Es muss genau ein '@'-Zeichen existieren
+    if text.count('@') != 1:
+        return False
+
+    # Wir teilen den Text am '@' in Lokalteil und Domainteil
+    lokalteil, domainteil = text.split('@')
+
+    # Regel 2: Der Teil vor dem '@' darf nicht leer sein
+    if not lokalteil:
+        return False
+
+    # Regel 3: Im Domainteil muss mindestens ein Punkt existieren
+    if '.' not in domainteil:
+        return False
+
+    # Regel 4: Der Domainteil darf nicht mit einem Punkt starten oder enden
+    if domainteil.startswith('.') or domainteil.endswith('.'):
+        return False
+
+    return True
+
+
+from urllib.parse import urlparse
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_098_extract_domain(url: str) -> str:
     """Extrahiere die Domain aus einer URL (ohne Schema/Path/Query)."""
-    pass
+    # Falls die URL kein Schema (wie http://) hat, fügen wir es kurz hinzu,
+    # damit urlparse sie korrekt als Webadresse erkennt
+    if not url.startswith(('http://', 'https://')):
+        url = 'https://' + url
+
+    return urlparse(url).netloc
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_099_parse_kv(text: str) -> dict[str, str]:
     """Parse einen Text wie 'a=1;b=2' in ein Dict."""
-    pass
+    if not text.strip():
+        return {}
+
+    return {schluessel.strip(): wert.strip() for paar in text.split(';') if '=' in paar for schluessel, wert in
+            [paar.split('=', 1)]}
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_100_teile_in_abschnitte(text: str, breite: int) -> list[str]:
     """Zerlege einen Text in Abschnitte fester Breite."""
-    pass
+    if breite <= 0:
+        return [text] if text else []
 
+    # Springe in 'breite'-Schritten durch den Text und schneide die Stücke aus
+    return [text[i:i + breite] for i in range(0, len(text), breite)]
