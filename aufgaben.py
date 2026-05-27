@@ -522,7 +522,7 @@ def aufgabe_080_matrix_multiply(a: list[list[int]], b: list[list[int]]) -> list[
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
 def aufgabe_081_filter_worte_laenge(worte: list[str], minimum: int) -> list[str]:
     """Filtere Wörter, deren Länge mindestens minimum beträgt."""
-    pass
+    return [wort for wort in worte if len(wort) >= minimum]
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
