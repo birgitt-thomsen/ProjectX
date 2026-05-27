@@ -165,7 +165,8 @@ def aufgabe_026_finde_index(werte: list[str], wert: str) -> int:
 
 
 # Gruppe: it-student, birgitt-thomsen
-def aufgabe_027_teilliste(werte: list[int], start: int, ende: int) -> list[int]:
+def aufgabe_027_teilliste(werte: list[int], start: int, ende: int) -> list[
+    int]:
     """Gib eine Teilliste von start (inkl.) bis ende (exkl.) zurück."""
     pass
 
@@ -213,7 +214,8 @@ def aufgabe_034_rotate_left(werte: list[int], schritte: int) -> list[int]:
 
 
 # Gruppe: it-student, birgitt-thomsen
-def aufgabe_035_split_even_odd(werte: list[int]) -> tuple[list[int], list[int]]:
+def aufgabe_035_split_even_odd(werte: list[int]) -> tuple[
+    list[int], list[int]]:
     """Trenne die Liste in gerade und ungerade Zahlen auf."""
     pass
 
@@ -237,7 +239,8 @@ def aufgabe_038_invert_dict(data: dict[str, str]) -> dict[str, str]:
 
 
 # Gruppe: it-student, birgitt-thomsen
-def aufgabe_039_merge_dicts(a: dict[str, Any], b: dict[str, Any]) -> dict[str, Any]:
+def aufgabe_039_merge_dicts(a: dict[str, Any], b: dict[str, Any]) -> dict[
+    str, Any]:
     """Führe zwei Dicts zusammen, b überschreibt a bei Konflikten."""
     pass
 
@@ -261,19 +264,23 @@ def aufgabe_042_word_frequency(worte: list[str]) -> dict[str, int]:
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_043_dict_without_keys(data: dict[str, int], keys: list[str]) -> dict[str, int]:
+def aufgabe_043_dict_without_keys(
+        data: dict[str, int], keys: list[str]
+) -> dict[str, int]:
     """Gib ein neues Dict ohne die angegebenen Schlüssel zurück."""
     pass
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_044_find_key_by_value(data: dict[str, int], value: int) -> Optional[str]:
+def aufgabe_044_find_key_by_value(data: dict[str, int], value: int) -> \
+Optional[str]:
     """Finde den ersten Schlüssel, dessen Wert value entspricht."""
     pass
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_045_safe_get(data: dict[str, Any], path: list[str]) -> Optional[Any]:
+def aufgabe_045_safe_get(data: dict[str, Any], path: list[str]) -> Optional[
+    Any]:
     """Greife sicher auf verschachtelte Dicts zu, None wenn Pfad fehlt."""
     pass
 
@@ -297,7 +304,8 @@ def aufgabe_048_set_difference(a: set[int], b: set[int]) -> set[int]:
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_049_remove_duplicates_preserve_order(werte: list[str]) -> list[str]:
+def aufgabe_049_remove_duplicates_preserve_order(werte: list[str]) -> list[
+    str]:
     """Entferne doppelte Einträge aus einer Stringliste, Reihenfolge behalten."""
     pass
 
@@ -311,7 +319,10 @@ def aufgabe_050_has_duplicates(werte: list[Any]) -> bool:
 # Gruppe: Appeyron, esterplaza
 def aufgabe_051_sum_range(n: int) -> int:
     """Berechne die Summe der Zahlen von 1 bis n (inklusive)."""
-    pass
+    sum = 0
+    for num in range(1, n + 1):
+        sum += num
+    return sum
 
 
 # Gruppe: Appeyron, esterplaza
@@ -351,7 +362,9 @@ def aufgabe_057_kgv(a: int, b: int) -> int:
 
 
 # Gruppe: Appeyron, esterplaza
-def aufgabe_058_durchschnitt_gewichtet(werte: list[float], gewichte: list[float]) -> float:
+def aufgabe_058_durchschnitt_gewichtet(
+        werte: list[float], gewichte: list[float]
+) -> float:
     """Berechne den gewichteten Mittelwert, gleiche Länge vorausgesetzt."""
     pass
 
@@ -399,13 +412,17 @@ def aufgabe_065_skaliere(werte: list[float], faktor: float) -> list[float]:
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_066_moving_average(werte: list[float], fenster: int) -> list[float]:
+def aufgabe_066_moving_average(werte: list[float], fenster: int) -> list[
+    float]:
     """Berechne gleitende Durchschnitte mit Fenstergröße fenster."""
     pass
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_067_linear_map(wert: float, alt_min: float, alt_max: float, neu_min: float, neu_max: float) -> float:
+def aufgabe_067_linear_map(
+        wert: float, alt_min: float, alt_max: float, neu_min: float,
+        neu_max: float
+) -> float:
     """Mappe wert linear vom Bereich alt_min..alt_max nach neu_min..neu_max."""
     pass
 
@@ -429,7 +446,8 @@ def aufgabe_070_summenliste(werte: list[int]) -> list[int]:
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_071_zip_to_dict(keys: list[str], values: list[int]) -> dict[str, int]:
+def aufgabe_071_zip_to_dict(keys: list[str], values: list[int]) -> dict[
+    str, int]:
     """Baue ein Dict aus Schlüsseln und Werten gleicher Länge."""
     pass
 
@@ -441,31 +459,38 @@ def aufgabe_072_swap_keys_values(data: dict[str, str]) -> dict[str, str]:
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_073_filter_dict_by_value(data: dict[str, int], minimum: int) -> dict[str, int]:
+def aufgabe_073_filter_dict_by_value(
+        data: dict[str, int], minimum: int
+) -> dict[str, int]:
     """Filtere Einträge, deren Wert mindestens minimum ist."""
     pass
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_074_werte_aufaddieren(datensaetze: list[dict[str, int]]) -> dict[str, int]:
+def aufgabe_074_werte_aufaddieren(datensaetze: list[dict[str, int]]) -> dict[
+    str, int]:
     """Summiere Werte gleicher Schlüssel über mehrere Dicts."""
     pass
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_075_dict_diff(a: dict[str, int], b: dict[str, int]) -> dict[str, str]:
+def aufgabe_075_dict_diff(a: dict[str, int], b: dict[str, int]) -> dict[
+    str, str]:
     """Vergleiche a und b: 'gleich', 'nur_a', 'nur_b', 'anders' pro Schlüssel."""
     pass
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_076_sortiere_tupel_nach_index(eintraege: list[tuple[Any, ...]], index: int = 0) -> list[tuple[Any, ...]]:
+def aufgabe_076_sortiere_tupel_nach_index(
+        eintraege: list[tuple[Any, ...]], index: int = 0
+) -> list[tuple[Any, ...]]:
     """Sortiere eine Liste von Tupeln nach dem angegebenen Index."""
     pass
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_077_transponiere_matrix(matrix: list[list[int]]) -> list[list[int]]:
+def aufgabe_077_transponiere_matrix(matrix: list[list[int]]) -> list[
+    list[int]]:
     """Transponiere eine rechteckige Matrix."""
     pass
 
@@ -483,13 +508,16 @@ def aufgabe_079_spaltenmittel(matrix: list[list[float]]) -> list[float]:
 
 
 # Gruppe: markus-niessen, kollodergrosse
-def aufgabe_080_matrix_multiply(a: list[list[int]], b: list[list[int]]) -> list[list[int]]:
+def aufgabe_080_matrix_multiply(
+        a: list[list[int]], b: list[list[int]]
+) -> list[list[int]]:
     """Multipliziere zwei Matrizen (gültige Dimensionen vorausgesetzt)."""
     pass
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_081_filter_worte_laenge(worte: list[str], minimum: int) -> list[str]:
+def aufgabe_081_filter_worte_laenge(worte: list[str], minimum: int) -> list[
+    str]:
     """Filtere Wörter, deren Länge mindestens minimum beträgt."""
     pass
 
@@ -537,7 +565,8 @@ def aufgabe_088_binary_search(werte: list[int], ziel: int) -> int:
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_089_two_sum(werte: list[int], ziel: int) -> Optional[tuple[int, int]]:
+def aufgabe_089_two_sum(werte: list[int], ziel: int) -> Optional[
+    tuple[int, int]]:
     """Finde zwei Indizes, deren Werte zusammen ziel ergeben."""
     pass
 
@@ -549,7 +578,9 @@ def aufgabe_090_anagramm(text_a: str, text_b: str) -> bool:
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_091_zeichenhaeufigkeit_top(text: str, limit: int = 3) -> list[tuple[str, int]]:
+def aufgabe_091_zeichenhaeufigkeit_top(
+        text: str, limit: int = 3
+) -> list[tuple[str, int]]:
     """Gib die häufigsten Zeichen mitsamt Häufigkeit zurück."""
     pass
 
@@ -573,7 +604,8 @@ def aufgabe_094_count_substring(text: str, substring: str) -> int:
 
 
 # Gruppe: Airdinsh-Ai, NiBerni, ahmadalshouly
-def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> list[str]:
+def aufgabe_095_remove_stopwords(worte: list[str], stopwords: list[str]) -> \
+list[str]:
     """Entferne Stopwörter aus einer Wortliste (case-insensitive)."""
     pass
 
@@ -606,4 +638,3 @@ def aufgabe_099_parse_kv(text: str) -> dict[str, str]:
 def aufgabe_100_teile_in_abschnitte(text: str, breite: int) -> list[str]:
     """Zerlege einen Text in Abschnitte fester Breite."""
     pass
-
