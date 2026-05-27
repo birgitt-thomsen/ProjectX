@@ -162,61 +162,63 @@ def aufgabe_020_sortiere_aufsteigend(zahlen: list[int]) -> list[int]:
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_021_sortiere_absteigend(zahlen: list[int]) -> list[int]:
     """Gib eine neue Liste mit absteigend sortierten Zahlen zurück."""
-    pass
+    return sorted(zahlen, reverse=True)
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_022_filter_gerade(zahlen: list[int]) -> list[int]:
     """Filtere alle geraden Zahlen aus der Liste."""
-    pass
+    return [zahl for zahl in zahlen if zahl % 2 == 0]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_023_filter_ungerade(zahlen: list[int]) -> list[int]:
     """Filtere alle ungeraden Zahlen aus der Liste."""
-    pass
+    return [zahl for zahl in zahlen if zahl % 2 != 0]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_024_quadrate(zahlen: list[int]) -> list[int]:
     """Gib eine Liste mit Quadraten aller Zahlen zurück."""
-    pass
+    return [zahl ** 2 for zahl in zahlen]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_025_unique_werte(zahlen: list[int]) -> list[int]:
     """Entferne Duplikate, erhalte die erste Reihenfolge."""
-    pass
+    return list(dict.fromkeys(zahlen))
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_026_finde_index(werte: list[str], wert: str) -> int:
     """Finde den Index von wert, -1 wenn nicht vorhanden."""
-    pass
+    if wert in werte:
+        return werte.index(wert)
+    return -1
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_027_teilliste(werte: list[int], start: int, ende: int) -> list[int]:
     """Gib eine Teilliste von start (inkl.) bis ende (exkl.) zurück."""
-    pass
+    return werte[start:ende]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_028_zaehle_vorkommen(werte: list[str], gesucht: str) -> int:
     """Zähle, wie oft gesucht in der Liste vorkommt."""
-    pass
+    return werte.count(gesucht)
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_029_drehe_liste(werte: list[Any]) -> list[Any]:
     """Drehe die Reihenfolge der Liste um."""
-    pass
+    return werte[::-1]
 
 
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_030_flatten(liste_von_listen: list[list[int]]) -> list[int]:
     """Führe eine verschachtelte Liste zu einer flachen Liste zusammen."""
-    pass
+    return [zahl for liste in liste_von_listen for zahl in liste]
 
 
 # Gruppe: it-student, birgitt-thomsen
