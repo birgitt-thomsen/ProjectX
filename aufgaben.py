@@ -300,7 +300,7 @@ def aufgabe_037_dict_values_sum(data: dict[str, int]) -> int:
 # Gruppe: it-student, birgitt-thomsen
 def aufgabe_038_invert_dict(data: dict[str, str]) -> dict[str, str]:
 	"""Tausche Schlüssel und Werte (Fehler bei Duplikaten klären)."""
-	# Hinweis zum Duplikat-Problem: Bei doppelten Werten überschreibt  in Python
+	# Hinweis zum Duplikat-Problem: Bei doppelten Werten überschreibt in Python
 	# der spätere Eintrag den früheren im neuen Dict.
 	return {wert: schluessel for schluessel, wert in data.items()}
 
